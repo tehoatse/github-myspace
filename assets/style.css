@@ -1,0 +1,53 @@
+body {
+  background-color: #F4F4F2;
+  color: #495464;
+  font-family: monospace;
+  margin: 0;
+}
+
+.backyard {
+  border: solid;
+  border-color: #BBBFCA;
+  border-width: 2px;
+  display: block;
+  width: 100%;
+}
+
+.content {
+  left: 25%;
+  padding: 25px;
+  position: absolute;
+  width: 30%;
+}
+
+.chunk {
+  margin-bottom: 10px;
+}
+
+.heading {
+  font-family: monospace, sans-serif;
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.left-column {
+  background-color: #BBBFCA;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  width: 25%;
+}
+
+.prompt {
+  color: #F8A488;
+}
+
+.sub {
+  font-family: monospace;
+  font-weight: 500;
+}
+
+ul {
+  margin-top: 5px;
+}
