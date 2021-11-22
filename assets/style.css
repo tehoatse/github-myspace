@@ -32,9 +32,10 @@ body {
 
 .left-column {
   background-color: #BBBFCA;
-  height: 100vh;
+  height: 100%;
   left: 0;
   margin: 0;
+  position: absolute;
   width: 25%;
 }
 
