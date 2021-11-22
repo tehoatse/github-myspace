@@ -1,5 +1,5 @@
 body {
-  background-color: #F4F4F2;
+  background-color: #f4f4f2;
   color: #495464;
   font-family: monospace;
   margin: 0;
@@ -7,7 +7,7 @@ body {
 
 .backyard {
   border: solid;
-  border-color: #BBBFCA;
+  border-color: #bbbfca;
   border-width: 2px;
   display: block;
   width: 100%;
@@ -31,16 +31,16 @@ body {
 }
 
 .left-column {
-  background-color: #BBBFCA;
+  background-color: #bbbfca;
   height: 100%;
   left: 0;
   margin: 0;
-  position: absolute;
+  position: fixed;
   width: 25%;
 }
 
 .prompt {
-  color: #F8A488;
+  color: #f8a488;
 }
 
 .sub {
