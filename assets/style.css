@@ -52,8 +52,14 @@ ul {
   margin-top: 5px;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 480px){
   .hide {
     display: none;
+  }
+
+  .content{
+    left: 0;
+    margin-top: 5px;
+    width: 90%;
   }
 }
