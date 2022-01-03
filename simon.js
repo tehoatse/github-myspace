@@ -32,15 +32,19 @@ function startGame(){
         button.element.addEventListener("click", function(){
             handleClick(button);
         });
+        button.element.addEventListener("touchstart", function(){
+            handleClick(button);
+        });
     }
     
 }
 
 function handleClick(button){
+    
     button.playSound();
     flashButton(button.element);
-    let keepGoing = checkSequence(button, guessNumber);
-    if(keepGoing){
+    
+    if(checkSequence(button, guessNumber)){
         guessNumber++;
     }
     else{
