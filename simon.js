@@ -21,25 +21,21 @@ Button.prototype.playSound = function(){
 document.addEventListener("keydown", startGame);
 
 function startGame(){
-    level = 1;
-    guessNumber = 0;
-    document.querySelector("h1").innerHTML = "Level " + level;
-    document.removeEventListener("keydown", startGame);
-    sequence.push(getNextButton());
-    showButton(buttons, sequence[level-1]);
-    
+    resetGame();
     for(let button of buttons){
         button.element.addEventListener("click", function(){
             handleClick(button);
         });
-        button.element.addEventListener("touchstart", function(){
-            handleClick(button);
-        });
-    }
-    
+    } 
+    gameLoop(); 
 }
 
-function handleClick(button){
+function gameLoop(){
+    document.querySelector("h1").innerHTML = "Level " + level;    
+    getNextButton();
+}
+
+function handleClick(button){    
     
     button.playSound();
     flashButton(button.element);
@@ -49,10 +45,9 @@ function handleClick(button){
     }
     else{
         new Audio("assets/wrong.mp3").play();
-        guessNumber = 0;
-        sequence = [];
         document.querySelector("h1").innerHTML = "Game Over, Press Any Key to Restart";
-        document.addEventListener("keydown", startGame);
+        resetGame();
+        document.addEventListener("keydown", gameLoop);
         document.body.classList.add("game-over");
         setTimeout(function(){
             document.body.classList.remove("game-over");
@@ -63,8 +58,7 @@ function handleClick(button){
         level++;
         guessNumber = 0;
         setTimeout(function(){
-            sequence.push(getNextButton());
-            showButton(buttons, sequence[level-1]);
+            getNextButton();
         }, 500);
         document.querySelector("h1").innerHTML = "Level " + level;
     }
@@ -78,7 +72,8 @@ function flashButton(element){
 }
 
 function getNextButton(){
-    return Math.floor(Math.random() * 4);
+    sequence.push(Math.floor(Math.random() * 4));
+    showButton(buttons, sequence[level-1]);
 }
 
 function showButton(buttons, button){
@@ -90,6 +85,7 @@ function showButton(buttons, button){
 }
 
 function checkSequence(button, clickNumber){
+
     if(buttons.indexOf(button) == sequence[clickNumber]){
         return true;
     }
@@ -97,3 +93,13 @@ function checkSequence(button, clickNumber){
         return false;
     }
 }
+
+function resetGame(){
+    level = 1;
+    while(sequence.length > 0){
+        sequence.pop();   
+    }
+    guessNumber = 0;
+    document.removeEventListener("keydown", startGame);
+}
+
