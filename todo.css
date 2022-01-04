@@ -2,3 +2,10 @@
   display: none;
 }
 
+#addTask {
+  font-size: 1rem;
+  height: 25px;
+  margin: 5px;
+  text-align: center;
+  width: 25px;
+}
