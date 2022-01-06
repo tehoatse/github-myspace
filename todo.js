@@ -1,6 +1,6 @@
 "use strict";
 
-let taskArray = [];
+let listOfTasks = [];
 
 function Task(title, content){
   this.title = title;
@@ -13,47 +13,45 @@ init();
 function init(){
   document.querySelector("#addTask").addEventListener("click", toggleEntryFields);
   document.querySelector("#submit").addEventListener("click", handleSubmitClick);
-  document.querySelector("#clearInput").addEventListener("click", clearInput);
-  console.log(taskArray);
-  console.log(localStorage.todoTaskArray);
-  if(localStorage.getItem("todoTaskArray") != null){
-    taskArray = JSON.parse(localStorage.getItem("todoTaskArray"));
+  document.querySelector("#clearInput").addEventListener("click", clearEntryFields);
+  if(localStorage.getItem("storedListOfTasks") != null){
+    listOfTasks = JSON.parse(localStorage.getItem("storedListOfTasks"));
   }
-  console.log(taskArray);
-  drawTaskList();
+  populateTaskList();
 }
 
 function toggleEntryFields(){
-  if (document.querySelector("#addTask").innerHTML === "-"){
-    document.querySelector("#addTask").innerHTML = "+";
+  let collapseButton = document.querySelector("#addTask");
+  if (collapseButton.innerHTML === "-"){
+    collapseButton.innerHTML = "+";
   }
   else {
-    document.querySelector("#addTask").innerHTML = "-";
+    collapseButton.innerHTML = "-";
   }
   document.querySelector("#taskEntry").classList.toggle("hidden");
 }
 
 function handleSubmitClick(){
-  taskArray.push(new Task(
+  listOfTasks.push(new Task(
     document.querySelector("#titleField").value,
     document.querySelector("#taskField").value
   ));
 
   updateTaskStorage();
-  clearInput();
+  clearEntryFields();
   toggleEntryFields();
-  drawTaskList();
+  populateTaskList();
 }
 
-function clearInput(){
+function clearEntryFields(){
   document.querySelector("#titleField").value = "";
   document.querySelector("#taskField").value = "";
 }
 
-function drawTaskList(){
+function populateTaskList(){
   let buildEntry = "";
   
-  for(let task of taskArray.reverse()){
+  for(let task of listOfTasks.reverse()){
     buildEntry += 
     `<div class="taskItem">
     <span class="taskTitle">
@@ -61,19 +59,19 @@ function drawTaskList(){
     </span>
     <br />
     ${task.content}
-    <button onclick="removeEntry(${taskArray.indexOf(task)})">x</button>
+    <button onclick="removeEntry(${listOfTasks.indexOf(task)})">x</button>
     </div>`;
   }
   
-  document.querySelector("#taskArray").innerHTML = buildEntry;
+  document.querySelector("#taskList").innerHTML = buildEntry;
 }
 
 function removeEntry(entryNumber){
-  taskArray.splice(entryNumber, 1);
+  listOfTasks.splice(entryNumber, 1);
   updateTaskStorage();
-  drawTaskList();
+  populateTaskList();
 }
 
 function updateTaskStorage(){
-  localStorage.setItem("todoTaskArray", JSON.stringify(taskArray));
+  localStorage.setItem("storedListOfTasks", JSON.stringify(listOfTasks));
 }
