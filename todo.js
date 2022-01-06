@@ -37,9 +37,9 @@ function handleSubmitClick(){
   taskArray.push(new Task(
     document.querySelector("#titleField").value,
     document.querySelector("#taskField").value
-  ))
+  ));
 
-  localStorage.setItem("todoTaskArray", JSON.stringify(taskArray));
+  updateTaskStorage();
   clearInput();
   toggleEntryFields();
   drawTaskList();
@@ -53,7 +53,7 @@ function clearInput(){
 function drawTaskList(){
   let buildEntry = "";
   
-  for(let task of taskArray){
+  for(let task of taskArray.reverse()){
     buildEntry += 
     `<div class="taskItem">
     <span class="taskTitle">
@@ -63,7 +63,6 @@ function drawTaskList(){
     ${task.content}
     <button onclick="removeEntry(${taskArray.indexOf(task)})">x</button>
     </div>`;
-    
   }
   
   document.querySelector("#taskArray").innerHTML = buildEntry;
@@ -71,5 +70,10 @@ function drawTaskList(){
 
 function removeEntry(entryNumber){
   taskArray.splice(entryNumber, 1);
+  updateTaskStorage();
   drawTaskList();
+}
+
+function updateTaskStorage(){
+  localStorage.setItem("todoTaskArray", JSON.stringify(taskArray));
 }
