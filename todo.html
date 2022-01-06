@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet"> 
         <meta charset="utf-8">
         <title>todo</title>
         <link rel="stylesheet" href="todo.css" />
         <link rel="icon" href="assets/favicon.ico" />
     </head>
     <body>
-        todo<br>
-        <button id="addTask" type="button">+</button>
-        <div id="taskEntry" class="hidden">
-            Title <input id="titleField" name="jobTitle" type="text">
-            <br>
-            <textarea id="taskField"></textarea><br>
-            <button id="submit">submit</button><button id="clearInput">clear</button>
-        </div>
-        <br/>
-        <div id="taskList">
+        <div id="column">
+            <h1>todo.<button id="addTask" type="button">+</button></h1>
             
+            <div id="taskEntry" class="hidden">
+                Title <input id="titleField" name="jobTitle" type="text">
+                <br>
+                <textarea id="taskField"></textarea><br>
+                <button id="submit">submit</button><button id="clearInput">clear</button>
+            </div>
+           <br/>
+           <div id="taskList">
+            
+            </div>
         </div>
-
-
-        <script src="todo.js"></script>
+    <script src="todo.js"></script>
     </body>
 </html>
