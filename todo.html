@@ -3,7 +3,7 @@
     <head>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Roboto:wght@900&display=swap" rel="stylesheet"> 
         <meta charset="utf-8">
         <title>todo</title>
         <link rel="stylesheet" href="todo.css" />
@@ -13,10 +13,11 @@
         <div id="column">
             <h1>todo.<button id="addTask" type="button">+</button></h1>
             
-            <div id="taskEntry" class="hidden">
-                Title <input id="titleField" name="jobTitle" type="text">
+            <div id="taskEntry" class="hidden inheritWidth">
+                task title<input id="titleField" name="jobTitle" type="text" class="inheritWidth">
                 <br>
-                <textarea id="taskField"></textarea><br>
+                task content
+                <textarea id="taskField" class="inheritWidth"></textarea><br>
                 <button id="submit">submit</button><button id="clearInput">clear</button>
             </div>
            <br/>

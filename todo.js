@@ -32,7 +32,7 @@ function toggleEntryFields(){
 }
 
 function handleSubmitClick(){
-  listOfTasks.push(new Task(
+  listOfTasks.unshift(new Task(
     document.querySelector("#titleField").value,
     document.querySelector("#taskField").value
   ));
@@ -51,16 +51,20 @@ function clearEntryFields(){
 function populateTaskList(){
   let buildEntry = "";
   
-  for(let task of listOfTasks.reverse()){
+  for(let task of listOfTasks){
     buildEntry += 
-    `<div class="taskItem">
-    <span class="taskTitle">
+    `<div class="taskItem inheritWidth">
+    <div class="taskTitle inheritWidth">
     ${task.title}
-    </span>
-    <br />
+    </div>
+    <div class="taskContent inheritWidth">
     ${task.content}
-    <button onclick="removeEntry(${listOfTasks.indexOf(task)})">x</button>
-    </div>`;
+    </div>
+    <button onclick="editEntry(${listOfTasks.indexOf(task)})">edit</button>
+    <button onclick="removeEntry(${listOfTasks.indexOf(task)})">delete</button>
+    </div>
+    <hr>
+    `;
   }
   
   document.querySelector("#taskList").innerHTML = buildEntry;
@@ -74,4 +78,15 @@ function removeEntry(entryNumber){
 
 function updateTaskStorage(){
   localStorage.setItem("storedListOfTasks", JSON.stringify(listOfTasks));
+}
+
+function editEntry(entryNumber){
+  document.querySelector("#titleField").value = listOfTasks[entryNumber].title;
+  document.querySelector("#taskField").value = listOfTasks[entryNumber].content;
+  listOfTasks.splice(entryNumber, 1);
+  updateTaskStorage();
+  populateTaskList();
+  if(document.querySelector("#addTask").innerHTML === "+"){
+    toggleEntryFields();
+  }
 }
