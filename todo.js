@@ -49,10 +49,10 @@ function clearEntryFields(){
 }
 
 function populateTaskList(){
-  let buildEntry = "";
+  let buildEntries = "";
   
   for(let task of listOfTasks){
-    buildEntry += 
+    buildEntries += 
     `<div class="taskItem inheritWidth">
     <div class="taskTitle inheritWidth">
     ${task.title}
@@ -67,7 +67,7 @@ function populateTaskList(){
     `;
   }
   
-  document.querySelector("#taskList").innerHTML = buildEntry;
+  document.querySelector("#taskList").innerHTML = buildEntries;
 }
 
 function removeEntry(entryNumber){
