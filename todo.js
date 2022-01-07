@@ -53,15 +53,17 @@ function populateTaskList(){
   
   for(let task of listOfTasks){
     buildEntries += 
-    `<div class="taskItem inheritWidth">
+    `<div onmouseover="showTaskButtons(this)" onmouseleave="hideTaskButtons(this)" class="taskItem inheritWidth">
     <div class="taskTitle inheritWidth">
     ${task.title}
     </div>
     <div class="taskContent inheritWidth">
     ${task.content}
     </div>
-    <button onclick="editEntry(${listOfTasks.indexOf(task)})">edit</button>
-    <button onclick="removeEntry(${listOfTasks.indexOf(task)})">delete</button>
+    <div id="taskButtons" class="invisible">
+      <button onclick="editEntry(${listOfTasks.indexOf(task)})">edit</button>
+      <button onclick="removeEntry(${listOfTasks.indexOf(task)})">done</button>
+    </div>
     </div>
     <hr>
     `;
@@ -90,3 +92,13 @@ function editEntry(entryNumber){
     toggleEntryFields();
   }
 }
+
+function showTaskButtons(taskPanel){
+  taskPanel.querySelector("#taskButtons").classList.remove("invisible");
+  console.log(taskPanel.querySelector("button").classList);
+}
+
+function hideTaskButtons(taskPanel){
+  taskPanel.querySelector("#taskButtons").classList.add("invisible");
+  console.log(taskPanel.querySelector("button").classList);
+} 
