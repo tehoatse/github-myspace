@@ -33,7 +33,7 @@ button {
 }
 
 .darkgrey {
-    color:rgb(150, 150, 150);
+    color:rgb(75, 75, 75);
 }
 
 h1 {
@@ -51,7 +51,7 @@ h1 {
 }
 
 hr {
-    border: 1px solid rgb(150, 150, 150);
+    border: 1px solid rgb(200, 200, 200);
     margin: 0;
     margin-bottom: 10px;
     margin-top: 10px;
