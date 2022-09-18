@@ -11,7 +11,7 @@
 body {
     font-family: 'Courier Prime', monospace;
     font-size: smaller;
-    background-color: rgb(245,245,245);
+    background-color: rgb(250,250,250);
     }
 
 button {
@@ -21,7 +21,7 @@ button {
 }
 
 #column {
-    background-color: rgb(245,245,245);
+    background-color: rgb(250,250,250);
     margin: auto;
     margin-top: 200px;
     padding: 20px;
